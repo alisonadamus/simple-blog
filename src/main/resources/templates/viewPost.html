@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Пост</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1 th:text="${post.title}"></h1>
+<p th:text="${post.description}"></p>
+<p th:text="${formattedCreatedAt}"></p>
+<p th:text="${formattedUpdatedAt}"></p>
+<div>
+  <a th:href="@{/posts/edit/{id}(id=${post.id})}">Редагувати пост</a>
+  <a th:href="@{/posts/delete/{id}(id=${post.id})}">Видалити пост</a>
+  <a th:href="@{/posts}">Назад до списку</a>
+</div>
+
+</body>
+</html>

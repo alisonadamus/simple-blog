@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <title>Список постів</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>Список постів</h1>
+<a th:href="@{/posts/new}">Додати пост</a>
+
+<div th:if="${posts.isEmpty()}">Here is no notes yet...</div>
+<ul>
+  <li th:each="post : ${posts}">
+    <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
+  </li>
+</ul>
+<div>
+  <a th:href="@{/posts(page=${page - 1}, size=${size})}" th:if="${page > 0}">Попередня</a>
+  <span th:text="'Сторінка ' + (${page + 1}) + ' з ' + ${totalPages}"></span>
+  <a th:href="@{/posts(page=${page + 1}, size=${size})}" th:if="${page + 1 < totalPages}">Наступна</a>
+</div>
+</body>
+</html>
